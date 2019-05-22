@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*Html part*@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="chart-container"></div>
+    <canvas id="line-chartcanvas"></canvas>
+</body>
+</html>
+
+
+@*JavaScript Part*@
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //alert("Hello");
+
+
+    $.ajax({
+
+        url: '@Url.Action("LoadData")',
+        type: 'GET',
+        dataType:"JSON",
+        success: function (data) {
+            //console.log(data);
+            var TemperetureData = {
+
+                Dhaka: [],
+                Rajshahi: []
+            };
+            var len = data.length;
+            for (var i = 0; i < len; i++) {
+                if (data[i].LocationName == "Dhaka")
+                   TemperetureData.Dhaka.push(data[i].Temperature);
+            }
+
+
+            var ctx = $("#line-chartcanvas");
+            // useful data for desiging chart
+            var data = {
+                labels: ["Day-1", "Day-2", "Day-3", "Day-4", "Day-5", "Day-6", "Day-7"],
+                datasets: [
+                    {
+
+                        label: "Dhaka: Temperature",
+                        data: TemperetureData.Dhaka,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(225,0,0,0.4)",
+                        borderColor: "red", // The main line color
+                        borderCapStyle: 'square',
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: "black",
+                        pointBackgroundColor: "white",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: "yellow",
+                        pointHoverBorderColor: "brown",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHitRadius: 10,
+                    }
+
+
+                ]
+            }
+            var chart = new Chart(ctx, {
+                type: "line",
+                data: data,
+                options: {}
+            });
+
+        },
+
+        error: function (data) {
+            alert("Error Occurs");
+        }
+
+
+    });
+});
+</script>
