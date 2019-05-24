@@ -23,12 +23,19 @@ namespace WeatherApplication.Controllers
 
 
         // GET: Weather
+        //return type view
+        //take no input
+        //show weather chart
+
         public ActionResult Index()
         {
 
 
             return View();
         }
+        //retun json data
+        //take no input
+        
         public JsonResult LoadData()
         {
             var data = db.WeatherDetails.ToList();
@@ -37,11 +44,16 @@ namespace WeatherApplication.Controllers
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult ShowChart()
+        //return type view
+        //take no input
+        //show weather data in list view
+        public ActionResult ShowData()
         {
-
-            return View();
+            return View(db.WeatherDetails.ToList());
         }
+       //return type view
+       //take no input
+       //function for uplaoding file
         public ActionResult Create()
         {
             return View();
@@ -92,11 +104,12 @@ namespace WeatherApplication.Controllers
                             if (!string.IsNullOrWhiteSpace(word))
                             {
                                 WeatherData.Add(word);
+                                
 
                             }
 
                         }
-
+                        
                         for (int i = 0; i < WeatherData.Count(); i++)
                         {
                             CurrentData.LocationId = int.Parse(Location);
@@ -114,6 +127,7 @@ namespace WeatherApplication.Controllers
                             CurrentData.CreateDateTime = now;
 
                         }
+                       // New(CurrentData);
                         db.WeatherDetails.Add(CurrentData);
                         db.SaveChanges();
                         WeatherData.Clear();
@@ -123,8 +137,13 @@ namespace WeatherApplication.Controllers
                 }
             }
 
+            
+
 
             return View();
         }
+
+        
+       
     }
 }

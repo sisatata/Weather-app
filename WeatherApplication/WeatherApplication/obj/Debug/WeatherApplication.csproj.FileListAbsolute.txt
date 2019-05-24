@@ -86,3 +86,11 @@ C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\
 C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\Json.pdb
 C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\obj\Debug\WeatherApplication.Migrations.CountryPopulationAdded.resources
 C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\obj\Debug\WeatherApplication.Migrations.modeldelted.resources
+C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\System.Net.Http.Formatting.dll
+C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\System.Web.Http.dll
+C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\System.Web.Http.WebHost.dll
+C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\System.Net.Http.Formatting.xml
+C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\System.Web.Http.xml
+C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\System.Web.Http.WebHost.xml
+C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\AutoMapper.dll
+C:\Users\aan-nahl hp pro\source\repos\WeatherApplication\WeatherApplication\bin\AutoMapper.xml

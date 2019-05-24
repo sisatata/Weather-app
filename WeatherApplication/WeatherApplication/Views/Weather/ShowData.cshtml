@@ -1,0 +1,122 @@
+﻿@model IEnumerable<WeatherApplication.Models.WeatherDetail>
+
+@{
+    ViewBag.Title = "ShowData";
+}
+
+<h2>ShowData</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="weatherdetails">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RealDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Temperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pressure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salinity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Turbidity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Oxygen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fluorescence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatteryVoltage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDateTime)
+        </th>
+        <th>
+            Delete
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RealDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temperature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pressure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salinity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turbidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oxygen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fluorescence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatteryVoltage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDateTime)
+            </td>
+            <td>
+                <button data-weather-id="@item.Id" class="btn-link js-delete">Delete</button>
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#weatherdetails").on("click", ".js-delete ", function () {
+                var button = $(this);
+                if (confirm("Are you sure want to  delete this data ?")) {
+                    $.ajax({
+
+                        url: "/api/WeatherDetails/" + button.attr("data-weather-id"),
+                        method: "DELETE",
+                        success: function () {
+                            console.log("Success");
+                            button.parents("tr").remove();
+                        }
+                    });
+                }
+
+            });
+        });
+
+
+
+
+
+    </script>
+
+}
